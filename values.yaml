@@ -7,23 +7,24 @@ kind: DaemonSet
 replicaCount: 1
 
 image:
-  repository: cr.fluentbit.io/fluent/fluent-bit
+  repository: registry.sirius.online/infra/fluent-bit
   # Overrides the image tag whose default is {{ .Chart.AppVersion }}
   # Set to "-" to not use the default value
-  tag:
+  tag: 2.2.0
   digest:
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 testFramework:
-  enabled: true
+  enabled: false
   namespace:
   image:
     repository: busybox
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
     tag: latest
     digest:
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: infra-registry
 nameOverride: ""
 fullnameOverride: ""
 
@@ -487,9 +488,9 @@ initContainers: []
 logLevel: info
 
 hotReload:
-  enabled: false
+  enabled: true
   image:
-    repository: ghcr.io/jimmidyson/configmap-reload
+    repository: registry.sirius.online/infra/fluent-bit/configmap-reload
     tag: v0.11.1
     digest:
     pullPolicy: IfNotPresent
