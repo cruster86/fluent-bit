@@ -10,7 +10,7 @@ image:
   repository: registry.sirius.online/infra/fluent-bit
   # Overrides the image tag whose default is {{ .Chart.AppVersion }}
   # Set to "-" to not use the default value
-  tag: 2.2.0
+  tag: 2.2.1
   digest:
   pullPolicy: IfNotPresent
 
